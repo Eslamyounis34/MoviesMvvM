@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/favouritelayout">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="5dp"
+        android:id="@+id/favoritescardview"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:background="#34486D"
+            android:elevation="16dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/favouriteimageView"
+                android:layout_width="70dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="5dp"
+                app:srcCompat="@drawable/test" />
+
+            <TextView
+                android:id="@+id/favouritetextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="The Dark Night"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="2dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="#D5E1EE"
+                android:layout_toRightOf="@id/favouriteimageView"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_below="@id/favouritetextView"
+                android:layout_toRightOf="@id/favouriteimageView">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/gold_star_icon"
+                    android:id="@+id/star_gold"
+
+                    />
+                <TextView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:textColor="#D5E1EE"
+                    android:layout_toRightOf="@id/star_gold"
+                    android:id="@+id/mfavouritesovierate"
+                    />
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
