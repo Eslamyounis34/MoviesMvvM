@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#000"
+    android:layout_height="match_parent"
+    tools:context=".ui.MovieImagePreview">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fullscreenimage"
+        android:scaleType="center"
+        />
+
+    <io.github.kobakei.materialfabspeeddial.FabSpeedDial
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/imagefabmenu"
+        app:fab_fabBackgroundColor="#D5E1EE"
+        app:fab_fabDrawableTint="#34486D"
+        app:fab_miniFabBackgroundColor="#fff"
+        android:layout_margin="5dp"
+        app:fab_menu="@menu/fabmenu"
+        android:layout_alignParentRight="true"/>
+
+</RelativeLayout>

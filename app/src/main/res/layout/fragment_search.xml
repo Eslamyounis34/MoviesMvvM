@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#D5E1EE"
+    android:layout_height="match_parent"
+    tools:context=".ui.SearchFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchview"
+        android:weightSum="1"
+        android:orientation="horizontal"
+        android:minHeight="?actionBarSize"
+        android:layout_marginTop="10dp"
+        >
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight=".8"
+            android:layout_height="40dp"
+            android:padding="10dp"
+            android:id="@+id/searchedittext"
+            android:hint="Type Movie Here"
+            android:background="@drawable/edittextbg"
+            android:gravity="center"
+            android:textColorHint="#34486D"
+            android:textColor="#D5E1EE"
+           android:layout_marginLeft="10dp"/>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text="Search"
+            android:id="@+id/searchtextview"
+            android:padding="5dp"
+            android:textSize="17sp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/searchiconbackground"
+            android:src="@drawable/lifht_search_icon"
+            android:textColor="#34486D"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:layout_weight=".2"/>
+    </LinearLayout>
+
+   <androidx.recyclerview.widget.RecyclerView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="10dp"
+       android:id="@+id/searchrecyclerview"
+       android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+       android:layout_below="@id/searchview"
+       app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+       app:spanCount="2"
+       tools:listitem="@layout/categoryrecycleritemrow"
+       />
+</RelativeLayout>

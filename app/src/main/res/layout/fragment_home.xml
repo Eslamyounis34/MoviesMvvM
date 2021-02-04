@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#D5E1EE"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.HomeFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/image_slider"
+            android:layout_width="wrap_content"
+            android:layout_height="500dp"
+            app:auto_cycle="true"
+            app:corner_radius="25"
+            app:period="2000"
+            app:delay="0"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image_slider"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:id="@+id/topratedlayout">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/categoryicon"
+                android:layout_alignParentRight="true"
+                android:id="@+id/topratedicon"
+                android:layout_marginRight="15dp"></ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Top Rated"
+                android:layout_marginLeft="8dp"
+                android:textSize="20sp"
+                android:textColor="#34486D"
+                android:textStyle="bold"
+                android:id="@+id/topratedtx"></TextView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="2dp"
+                android:id="@+id/topratedrecycler"
+                tools:listitem="@layout/recycleritemrow"
+                android:layout_below="@id/topratedtx"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                ></androidx.recyclerview.widget.RecyclerView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/topratedlayout"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:id="@+id/nowplayinglayout">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/categoryicon"
+                android:id="@+id/nowplayingicon"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"></ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Now Playing"
+                android:textSize="20sp"
+                android:layout_marginLeft="8dp"
+                android:textColor="#34486D"
+                android:textStyle="bold"
+                android:id="@+id/nowplayingtx"></TextView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="2dp"
+                android:layout_below="@id/nowplayingtx"
+                tools:listitem="@layout/recycleritemrow"
+                android:id="@+id/nowplayingrecycler"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                ></androidx.recyclerview.widget.RecyclerView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/popularlayout"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/nowplayinglayout">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/categoryicon"
+                android:layout_alignParentRight="true"
+                android:id="@+id/popularicon"
+                android:layout_marginRight="15dp"></ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Popular"
+                android:layout_marginLeft="8dp"
+                android:textSize="20sp"
+                android:textColor="#34486D"
+                android:textStyle="bold"
+                android:id="@+id/populartx"></TextView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="2dp"
+                tools:listitem="@layout/recycleritemrow"
+                android:id="@+id/popularrecycler"
+                android:layout_below="@id/populartx"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                ></androidx.recyclerview.widget.RecyclerView>
+        </RelativeLayout>
+
+
+
+
+    </RelativeLayout>
+
+</ScrollView>
