@@ -3,6 +3,7 @@ package com.example.kotlinstudy.ui
 import android.os.Bundle
 import android.util.Log.d
 import android.util.Log.e
+import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -52,6 +53,9 @@ class Details : AppCompatActivity() {
         var movieRating: CircularProgressBar
         var moviePoster: ImageView
         var favouriteIcon: ImageView
+        var noTrailerstx:TextView
+        var noCasttx:TextView
+        var noPhotostx:TextView
 
         backdroprecyclerview = findViewById(R.id.backdroprecycler)
         videosrecyclerview = findViewById(R.id.videoslistrecyclerview)
@@ -64,6 +68,11 @@ class Details : AppCompatActivity() {
         movieRating = findViewById(R.id.movieRate)
         moviePoster = findViewById(R.id.posterimage)
         favouriteIcon = findViewById(R.id.favoriteiconview)
+        noTrailerstx=findViewById(R.id.notrailers)
+        noCasttx=findViewById(R.id.nocast)
+        noPhotostx=findViewById(R.id.nophotos)
+
+
         var MOVIENAME = ""
         var MOVIEPOSTER = ""
         var MOVIERATE = ""
@@ -75,28 +84,44 @@ class Details : AppCompatActivity() {
 
         var checkREsult = viewModel.checkExists(intent.toInt())
         if (checkREsult == true) {
-            favouriteIcon.setImageResource(R.drawable.ic_baseline_favorite_24)
+            favouriteIcon.setImageResource(R.drawable.offwhite_unfav_icon)
         } else {
-            favouriteIcon.setImageResource(R.drawable.details_fav_icon)
+            favouriteIcon.setImageResource(R.drawable.offwhite_fav_icon)
 
         }
         viewModel.getMovieImages(intent).observe(this, Observer {
             backdroprecyclerview.apply {
-                adapter = BackDropRecyclerAdapter(it)
+                if (it.isEmpty()){
+                    backdroprecyclerview.visibility=View.GONE
+                    noPhotostx.visibility=View.VISIBLE
+
+                }else{
+                    adapter = BackDropRecyclerAdapter(it)
+
+                }
             }
         })
 
         viewModel.getMovieVideos(intent).observe(this, Observer {
 
             videosrecyclerview.apply {
+                if(it.isEmpty())
+                {
+                    videosrecyclerview.visibility=View.GONE
+                    noTrailerstx.visibility= View.VISIBLE
 
-                adapter = VideosRecyclerAdapter(it)
+                }
+                else{
+                    adapter = VideosRecyclerAdapter(it)
+
+                }
+
             }
         })
 
         viewModel.getMoviesData(intent).observe(this, Observer {
 
-            Picasso.get().load("https://image.tmdb.org/t/p/original/" + it.backdrop_path)
+            Picasso.get().load("https://image.tmdb.org/t/p/w1280/" + it.poster_path)
                 .into(moviePoster)
 
             MOVIENAME = it.title
@@ -123,7 +148,7 @@ class Details : AppCompatActivity() {
                     val movie =
                         FavouritesMovies(0, intent.toInt(), MOVIENAME, MOVIEPOSTER, MOVIERATE)
                     viewModel.addToFavourites(movie)
-                    favouriteIcon.setImageResource(R.drawable.ic_baseline_favorite_24)
+                    favouriteIcon.setImageResource(R.drawable.offwhite_unfav_icon)
                     Toast.makeText(this, "Added To Favourites", Toast.LENGTH_SHORT).show()
 
                     checkREsult=true
@@ -133,10 +158,19 @@ class Details : AppCompatActivity() {
             movieRating.apply {
                 progressMax = 10f
                 roundBorder = true
-                setProgressWithAnimation(7.5f, 10)
+                setProgressWithAnimation(it.vote_average.toFloat(), 10)
             }
             castrecyclerview.apply {
-                adapter = CastRecyclerAdapter(it.credits.cast)
+                if(it.credits.cast.isEmpty())
+                {
+                    castrecyclerview.visibility=View.GONE
+                    noCasttx.visibility=View.VISIBLE
+                }
+                else{
+                    adapter = CastRecyclerAdapter(it.credits.cast)
+
+                }
+
             }
 
         })

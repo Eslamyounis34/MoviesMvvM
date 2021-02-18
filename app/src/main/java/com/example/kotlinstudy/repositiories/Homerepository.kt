@@ -39,6 +39,7 @@ class Homerepository(val application: Application)  {
            .subscribeOn(Schedulers.io())
            .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
+                
                 nowPlayinMmoviesList.value=it.results
             })
 

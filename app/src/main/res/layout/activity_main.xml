@@ -1,27 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/con"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
+    android:background="@android:color/transparent"
     tools:context=".ui.MainActivity">
 
     <FrameLayout
+        android:id="@+id/container_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/bottomBar"
-        android:id="@+id/container_layout">
-
-    </FrameLayout>
+        android:background="@android:color/transparent"
+        android:layout_alignParentTop="true"></FrameLayout>
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:background="#34486D"
-        app:itemTextColor="@color/bottomitemscolor"
-        app:itemIconTint="@color/bottomitemscolor"
+        android:layout_height="wrap_content"
+        android:background="#000"
+        android:layout_gravity="bottom"
         android:layout_alignParentBottom="true"
-        app:menu="@menu/bottom_navigation_items" />
+        app:itemIconTint="@color/bottomitemscolor"
+        app:itemTextColor="@color/bottomitemscolor"
+        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+    app:menu="@menu/bottom_navigation_items"
+        app:itemRippleColor="@android:color/transparent"/>
+
+
 </RelativeLayout>

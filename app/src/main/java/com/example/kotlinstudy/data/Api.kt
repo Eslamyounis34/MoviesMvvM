@@ -14,6 +14,9 @@ interface Api {
     @GET("now_playing")
     fun fetchNowPlayingMovies(@Query("api_key") key: String): Observable<MoviesList>
 
+    @GET("upcoming")
+    fun fetchUpComingMovies(@Query("api_key") key: String): Observable<MoviesList>
+
     @GET("popular")
     fun fetchPopularMovies(@Query("api_key") key: String): Observable<MoviesList>
 
@@ -46,8 +49,12 @@ interface Api {
         @Query("query") query: String
     ): Observable<MoviesList>
 
-    @GET("{categoryname}")
-    fun getMoviesByCategoryName(@Path ("categoryname")category:String):
-            Observable<MoviesList>
+    @GET("{category}")
+    fun fetchMoviesByPage(
+        @Path("category")categoryName:String,
+        @Query("api_key") key: String,
+        @Query("page") pageNumber: Int
+    )
+            : Observable<MoviesList>
 
 }

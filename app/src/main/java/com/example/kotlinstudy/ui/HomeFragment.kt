@@ -4,6 +4,7 @@ import android.app.DownloadManager
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
@@ -11,7 +12,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -43,6 +46,7 @@ import java.io.Serializable
 class HomeFragment : Fragment() {
 
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -60,6 +64,7 @@ class HomeFragment : Fragment() {
         var toprate = root.findViewById<View>(R.id.topratedicon) as ImageView
         var popular = root.findViewById<View>(R.id.popularicon) as ImageView
         var nowplaying = root.findViewById<View>(R.id.nowplayingicon) as ImageView
+        var topratedtx=root.findViewById<View>(R.id.topratedtx) as TextView
 
         // Inflate the layout for this fragment
 
@@ -67,6 +72,7 @@ class HomeFragment : Fragment() {
         nowPlayingrecycler = root.findViewById(R.id.nowplayingrecycler)
         topratedrecycler = root.findViewById(R.id.topratedrecycler)
         popularrecycler = root.findViewById(R.id.popularrecycler)
+
 
 
         viewModel.getNowPlayingMovies().observe(viewLifecycleOwner, Observer {
@@ -124,17 +130,12 @@ class HomeFragment : Fragment() {
             .build()
 
         var api = retofit.create(Api::class.java)
-        api.fetchNowPlayingMovies("e76112b72c6c245384a5ecfd814a3ec2")
+        api.fetchUpComingMovies("e76112b72c6c245384a5ecfd814a3ec2")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 val imageList = ArrayList<SlideModel>() // Create image list
-                imageList.add(
-                    SlideModel(
-                        "https://image.tmdb.org/t/p/w1280/" + it.results[0].poster_path,
-                        it.results[0].title
-                    )
-                )
+
                 imageList.add(
                     SlideModel(
                         "https://image.tmdb.org/t/p/w1280/" + it.results[1].poster_path,
@@ -147,13 +148,40 @@ class HomeFragment : Fragment() {
                         it.results[2].title
                     )
                 )
+                imageList.add(
+                    SlideModel(
+                        "https://image.tmdb.org/t/p/w1280/" + it.results[3].poster_path,
+                        it.results[3].title
+                    )
+                )
+
+                imageList.add(
+                    SlideModel(
+                        "https://image.tmdb.org/t/p/w1280/" + it.results[4].poster_path,
+                        it.results[4].title
+                    )
+                )
+
+                imageList.add(
+                    SlideModel(
+                        "https://image.tmdb.org/t/p/w1280/" + it.results[5].poster_path,
+                        it.results[5].title
+                    )
+                )
+                imageList.add(
+                    SlideModel(
+                        "https://image.tmdb.org/t/p/w1280/" + it.results[6].poster_path,
+                        it.results[6].title
+                    )
+                )
+
 
                 imag_Slider.setImageList(imageList)
 
                 imag_Slider.setItemClickListener(object : ItemClickListener {
                     override fun onItemSelected(position: Int) {
                         var intent = Intent(context, Details::class.java)
-                        intent.putExtra("MovieID", it.results[position].id)
+                        intent.putExtra("MovieID", it.results[position+1].id)
                         startActivity(intent)
                     }
 

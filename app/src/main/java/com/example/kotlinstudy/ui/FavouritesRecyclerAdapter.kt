@@ -51,7 +51,10 @@ class FavouritesRecyclerAdapter(private val favoriteMovies:List<FavouritesMovies
        return favoriteMovies.get(position)
    }
 
-    override fun getItemCount()=favoriteMovies.size
+    override fun getItemCount():Int {
+        return favoriteMovies.size
+    }
+
+    }
 
 
-}

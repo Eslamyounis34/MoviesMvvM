@@ -13,7 +13,7 @@ class ViewPagerAdapter (private val context:Context):PagerAdapter() {
 
 
     private var layoutInflater:LayoutInflater?=null
-    private val images= arrayOf(R.drawable.vpone,R.drawable.vptwo,R.drawable.vpthree)
+    private val images= arrayOf(R.drawable.gold_star_icon,R.drawable.gold_star_icon,R.drawable.gold_star_icon)
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
         return view=== `object`
     }

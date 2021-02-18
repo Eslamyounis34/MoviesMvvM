@@ -3,9 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D5E1EE"
+    android:layoutDirection="ltr"
+    android:background="#191919"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.MenuFragment">
+    tools:context=".ui.FavouritesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
@@ -14,5 +15,17 @@
         android:layout_margin="10dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="vertical"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#fff"
+        android:id="@+id/nofavouritestextid"
+        android:text="No Movies In Your List"
+        android:layout_centerInParent="true"/>
+
+
 
 </RelativeLayout>

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#D5E1EE"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#191919"
+    android:layoutDirection="ltr"
     tools:context=".ui.HomeFragment">
 
     <RelativeLayout
@@ -14,118 +15,128 @@
         <com.denzcoskun.imageslider.ImageSlider
             android:id="@+id/image_slider"
             android:layout_width="wrap_content"
-            android:layout_height="500dp"
+            android:layout_height="470dp"
+            android:forceHasOverlappingRendering="true"
+            android:splitMotionEvents="true"
             app:auto_cycle="true"
-            app:corner_radius="25"
-            app:period="2000"
-            app:delay="0"/>
+            app:delay="0"
+            android:elevation="50dp"
+            android:layout_margin="15dp"
+            app:corner_radius="30"
+            app:period="3000"
+            app:placeholder="@drawable/home_loading_icon" />
 
         <RelativeLayout
+            android:id="@+id/topratedlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/image_slider"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="20dp"
-            android:id="@+id/topratedlayout">
+            android:layout_marginTop="20dp">
+
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/categoryicon"
-                android:layout_alignParentRight="true"
                 android:id="@+id/topratedicon"
-                android:layout_marginRight="15dp"></ImageView>
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Top Rated"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/offwhitecategoryicon"></ImageView>
+
+            <TextView
+                android:id="@+id/topratedtx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:textSize="20sp"
-                android:textColor="#34486D"
+                android:text="Top Rated"
                 android:textStyle="bold"
-                android:id="@+id/topratedtx"></TextView>
+                android:textColor="#8b8989"
+                android:textSize="20sp"></TextView>
+
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/topratedrecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="2dp"
-                android:id="@+id/topratedrecycler"
-                tools:listitem="@layout/recycleritemrow"
                 android:layout_below="@id/topratedtx"
+                android:layout_marginTop="2dp"
+                android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                ></androidx.recyclerview.widget.RecyclerView>
+                tools:listitem="@layout/recycleritemrow"></androidx.recyclerview.widget.RecyclerView>
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/nowplayinglayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/topratedlayout"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="20dp"
-            android:id="@+id/nowplayinglayout">
+            android:layout_marginTop="20dp">
+
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/categoryicon"
                 android:id="@+id/nowplayingicon"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="15dp"></ImageView>
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Now Playing"
-                android:textSize="20sp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/offwhitecategoryicon"></ImageView>
+
+            <TextView
+                android:id="@+id/nowplayingtx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:textColor="#34486D"
-                android:textStyle="bold"
-                android:id="@+id/nowplayingtx"></TextView>
+                android:fontFamily="@font/poppins_light"
+                android:text="Now Playing"
+                android:textColor="#8b8989"
+                android:textSize="20sp"
+                android:textStyle="bold"></TextView>
+
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/nowplayingrecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="2dp"
                 android:layout_below="@id/nowplayingtx"
-                tools:listitem="@layout/recycleritemrow"
-                android:id="@+id/nowplayingrecycler"
+                android:layout_marginTop="2dp"
+                android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                ></androidx.recyclerview.widget.RecyclerView>
+                tools:listitem="@layout/recycleritemrow"></androidx.recyclerview.widget.RecyclerView>
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/popularlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/popularlayout"
+            android:layout_below="@id/nowplayinglayout"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="20dp"
-            android:layout_below="@id/nowplayinglayout">
+            android:layout_marginTop="20dp">
+
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/categoryicon"
-                android:layout_alignParentRight="true"
                 android:id="@+id/popularicon"
-                android:layout_marginRight="15dp"></ImageView>
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Popular"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/offwhitecategoryicon"></ImageView>
+
+            <TextView
+                android:id="@+id/populartx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
+                android:text="Popular"
+                android:textColor="#8b8989"
                 android:textSize="20sp"
-                android:textColor="#34486D"
-                android:textStyle="bold"
-                android:id="@+id/populartx"></TextView>
+                android:textStyle="bold"></TextView>
+
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/popularrecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="2dp"
-                tools:listitem="@layout/recycleritemrow"
-                android:id="@+id/popularrecycler"
                 android:layout_below="@id/populartx"
+                android:layout_marginTop="2dp"
+                android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                ></androidx.recyclerview.widget.RecyclerView>
+                tools:listitem="@layout/recycleritemrow"></androidx.recyclerview.widget.RecyclerView>
         </RelativeLayout>
-
-
 
 
     </RelativeLayout>

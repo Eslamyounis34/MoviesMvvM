@@ -1,6 +1,7 @@
 package com.example.kotlinstudy.viewmodels
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -28,6 +29,8 @@ class HomeViewModel(application: Application): AndroidViewModel(application) {
 
     fun getNowPlayingMovies():LiveData<List<Movie>>
     {
+        Log.e("CheckDataHome",nowPlayingmoviesList.toString())
+
         return nowPlayingmoviesList
 
     }

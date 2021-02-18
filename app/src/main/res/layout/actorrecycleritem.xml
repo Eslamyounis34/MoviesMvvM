@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:text="Aleix"
         android:id="@+id/castname"
-        android:textColor="#34486D"
+        android:textColor="#8b8989"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/actorcard"

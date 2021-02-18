@@ -4,7 +4,7 @@
         android:state_checked="true"
         ></item>
 
-    <item android:color="#4bacb8"
+    <item android:color="#8b8989"
         android:state_checked="false"
         ></item>
 

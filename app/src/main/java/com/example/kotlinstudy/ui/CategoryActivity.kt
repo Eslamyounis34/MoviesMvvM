@@ -3,6 +3,7 @@ package com.example.kotlinstudy.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.GridLayout
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -27,39 +28,23 @@ class CategoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category)
 
-        var date=intent.getSerializableExtra("CategoryData")
-        lateinit var  categoryrecycler: RecyclerView
-        categoryrecycler=findViewById(R.id.categoryrecycler)
+        var date = intent.getSerializableExtra("CategoryData")
+        lateinit var categoryrecycler: RecyclerView
+        categoryrecycler = findViewById(R.id.categoryrecycler)
 
         lateinit var viewModel: CategoryMoviesViewModel
 
-        viewModel=ViewModelProvider(this).get(CategoryMoviesViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(CategoryMoviesViewModel::class.java)
+        viewModel.setListId(date as String)
 
-        if (date.toString()=="now_playing"){
-            viewModel.getNowPlayingMovies().observe(this, Observer {
-                categoryrecycler.apply {
-                    layoutManager=GridLayoutManager(context,2)
-                    adapter= CategoryRecyclerAdapter(it)
 
-                }
-            })
-        }else if (date.toString()=="popular"){
-            viewModel.getPopularMovies().observe(this, Observer {
-                categoryrecycler.apply {
-                    layoutManager=GridLayoutManager(context,2)
-                    adapter= CategoryRecyclerAdapter(it)
+        viewModel.userPagedList.observe(this, Observer {
+            val pgadapter = MoviesCategoryPagingAdapter()
+            pgadapter.submitList(it)
 
-                }
-            })
-        }else if(date.toString()=="top_rated"){
-            viewModel.getTopRatedMovies().observe(this, Observer {
-                categoryrecycler.apply {
-                    layoutManager=GridLayoutManager(context,2)
-                    adapter= CategoryRecyclerAdapter(it)
-
-                }
-            })
-        }
+            categoryrecycler.layoutManager = GridLayoutManager(this, 2)
+            categoryrecycler.adapter = pgadapter
+        })
 
 
     }

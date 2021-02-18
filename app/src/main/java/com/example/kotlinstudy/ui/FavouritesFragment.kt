@@ -5,42 +5,55 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinstudy.R
-import com.example.kotlinstudy.room.FavouritesMovies
 import com.example.kotlinstudy.viewmodels.FavouritesViewModel
-import com.example.kotlinstudy.viewmodels.HomeViewModel
 
 /**
  * A simple [Fragment] subclass.
  */
-class MenuFragment : Fragment() {
+class FavouritesFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val v = inflater.inflate(R.layout.fragment_menu, container, false)
 
 
         lateinit var viewModel: FavouritesViewModel
         lateinit var favouritesrecycler: RecyclerView
         lateinit var fav_adapter: FavouritesRecyclerAdapter
+        var v = inflater.inflate(R.layout.fragment_favourites, container, false)
 
+        val text: TextView = v.findViewById(R.id.nofavouritestextid)
         favouritesrecycler = v.findViewById(R.id.favoritesrecyclerview)
         viewModel = ViewModelProvider(this).get(FavouritesViewModel::class.java)
 
 
         viewModel.getAllFavMovies().observe(viewLifecycleOwner, Observer {
 
-            favouritesrecycler.apply {
-                adapter = FavouritesRecyclerAdapter(it)
-                fav_adapter = FavouritesRecyclerAdapter(it)
+            if (it.isEmpty())
+            {
+                favouritesrecycler.visibility=View.GONE
+                text.visibility=View.VISIBLE
+                text.setText("No Movies In Your List")
+            }
+            else {
+
+                text.visibility=View.GONE
+                favouritesrecycler.apply {
+                    adapter = FavouritesRecyclerAdapter(it)
+                    fav_adapter = FavouritesRecyclerAdapter(it)
+
+                }
+
 
                 //swipe to delete from room in REcyclerView
 
@@ -61,6 +74,13 @@ class MenuFragment : Fragment() {
                         (
 
                                 viewModel.deleteFromFavourites(fav_adapter.getNoteAt(viewHolder.adapterPosition)))
+                        if (viewHolder.adapterPosition == 0) {
+                            favouritesrecycler.visibility = View.GONE
+                            text.visibility = View.VISIBLE
+                            text.setText("No Movies In Your List")
+                        }
+
+
                     }
                 }
 
