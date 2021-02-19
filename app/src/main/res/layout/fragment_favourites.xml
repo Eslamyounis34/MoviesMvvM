@@ -26,6 +26,15 @@
         android:text="No Movies In Your List"
         android:layout_centerInParent="true"/>
 
+    <ProgressBar
+        android:id="@+id/fav_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:visibility="visible"
+        android:layout_centerVertical="true"
+        />
+
 
 
 </RelativeLayout>

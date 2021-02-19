@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -65,6 +66,7 @@ class HomeFragment : Fragment() {
         var popular = root.findViewById<View>(R.id.popularicon) as ImageView
         var nowplaying = root.findViewById<View>(R.id.nowplayingicon) as ImageView
         var topratedtx=root.findViewById<View>(R.id.topratedtx) as TextView
+        var progressBar=root.findViewById<View>(R.id.progress_bar) as ProgressBar
 
         // Inflate the layout for this fragment
 
@@ -73,12 +75,14 @@ class HomeFragment : Fragment() {
         topratedrecycler = root.findViewById(R.id.topratedrecycler)
         popularrecycler = root.findViewById(R.id.popularrecycler)
 
+        progressBar.visibility=View.VISIBLE
+
 
 
         viewModel.getNowPlayingMovies().observe(viewLifecycleOwner, Observer {
             nowPlayingrecycler.apply {
+                progressBar.visibility=View.GONE
                 adapter = MovieAdapter(it)
-
                 nowplaying.setOnClickListener(View.OnClickListener {
                     var intent = Intent(requireContext()!!, CategoryActivity::class.java)
                     intent.putExtra("CategoryData", "now_playing")

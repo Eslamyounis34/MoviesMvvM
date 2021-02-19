@@ -10,7 +10,14 @@
     android:id="@+id/searchfraglayout"
     android:layout_height="match_parent"
     tools:context=".ui.SearchFragment">
-
+    <ProgressBar
+        android:id="@+id/search_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        android:layout_centerVertical="true"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -60,4 +67,6 @@
        app:spanCount="2"
        tools:listitem="@layout/categoryrecycleritemrow"
        />
+
+
 </RelativeLayout>

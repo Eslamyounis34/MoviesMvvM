@@ -4,10 +4,7 @@ import android.os.Bundle
 import android.util.Log.d
 import android.util.Log.e
 import android.view.View
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -71,8 +68,11 @@ class Details : AppCompatActivity() {
         noTrailerstx=findViewById(R.id.notrailers)
         noCasttx=findViewById(R.id.nocast)
         noPhotostx=findViewById(R.id.nophotos)
+        var progressBar=findViewById<View>(R.id.details_progress_bar) as ProgressBar
 
 
+
+        progressBar.visibility=View.VISIBLE
         var MOVIENAME = ""
         var MOVIEPOSTER = ""
         var MOVIERATE = ""
@@ -123,6 +123,7 @@ class Details : AppCompatActivity() {
 
             Picasso.get().load("https://image.tmdb.org/t/p/w1280/" + it.poster_path)
                 .into(moviePoster)
+            progressBar.visibility=View.GONE
 
             MOVIENAME = it.title
             MOVIEPOSTER = it.poster_path

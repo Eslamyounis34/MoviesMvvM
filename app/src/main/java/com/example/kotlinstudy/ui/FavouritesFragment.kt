@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
@@ -34,10 +35,14 @@ class FavouritesFragment : Fragment() {
 
         val text: TextView = v.findViewById(R.id.nofavouritestextid)
         favouritesrecycler = v.findViewById(R.id.favoritesrecyclerview)
+        var progressBar=v.findViewById<View>(R.id.fav_progress_bar) as ProgressBar
         viewModel = ViewModelProvider(this).get(FavouritesViewModel::class.java)
 
+        progressBar.visibility=View.VISIBLE
 
         viewModel.getAllFavMovies().observe(viewLifecycleOwner, Observer {
+
+            progressBar.visibility=View.GONE
 
             if (it.isEmpty())
             {

@@ -15,6 +15,15 @@
         android:layout_height="match_parent"
         android:scaleType="fitXY" />
 
+    <ProgressBar
+        android:id="@+id/details_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="visible"
+        android:layout_centerVertical="true"
+        />
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="450dp"

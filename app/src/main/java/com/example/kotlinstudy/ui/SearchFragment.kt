@@ -48,9 +48,10 @@ class SearchFragment : Fragment() {
 
         lateinit var viewModel: SearchViewModel
         lateinit var searchRecyclerView: RecyclerView
-        var searchlayout:RelativeLayout
+        var searchlayout: RelativeLayout
 
-        searchlayout=v.findViewById(R.id.searchfraglayout)
+        searchlayout = v.findViewById(R.id.searchfraglayout)
+        var progressBar = v.findViewById<View>(R.id.search_progress_bar) as ProgressBar
 
 
         searchlayout.setOnClickListener(View.OnClickListener {
@@ -67,19 +68,38 @@ class SearchFragment : Fragment() {
 
         searchtx.setOnClickListener(View.OnClickListener {
             var query = search.text.toString()
-            viewModel.getResults(query).observe(viewLifecycleOwner, Observer {
-                searchRecyclerView.apply {
-                    adapter = CategoryRecyclerAdapter(it)
+            progressBar.visibility = View.VISIBLE
+            if (query.isEmpty())
+            {
+                progressBar.visibility = View.GONE
+                Toast.makeText(context,"Please Enter a valied Query",Toast.LENGTH_SHORT).show()
+            }
+            else{
+                viewModel.getResults(query).observe(viewLifecycleOwner, Observer {
+                    if (it.isEmpty()) {
+                        progressBar.visibility = View.GONE
+                        Toast.makeText(context, "No Results ", Toast.LENGTH_SHORT).show()
+
+                    } else {
+
+
+                    searchRecyclerView.apply {
+                        progressBar.visibility = View.GONE
+                        adapter = CategoryRecyclerAdapter(it)
+                    }
                 }
-            })
+                })
+            }
 
 
         })
 
         return v
     }
+
     fun View.hideKeyboard() {
-        val inputMethodManager = context.getSystemService(android.content.Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+        val inputMethodManager =
+            context.getSystemService(android.content.Context.INPUT_METHOD_SERVICE) as? InputMethodManager
         inputMethodManager?.hideSoftInputFromWindow(this.windowToken, 0)
     }
 
