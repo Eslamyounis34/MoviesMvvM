@@ -61,9 +61,9 @@
                             android:textStyle="bold"
                             android:layout_marginTop="10dp"
                             android:gravity="left"
+                            android:textColor="@color/textColor"
                             android:layout_marginLeft="10dp"
                             android:layout_marginBottom="3dp"
-                            android:textColor="#8b8989"
                             android:id="@+id/details_movieName"
                             ></TextView>
                     </LinearLayout>
@@ -99,7 +99,7 @@
                                 app:cpb_background_progressbar_color="#fff"
                                 app:cpb_background_progressbar_width="2dp"
                                 app:cpb_progress_direction="to_right"
-                                app:cpb_progressbar_color="#8b8989"
+                                app:cpb_progressbar_color="@color/textColor"
                                 app:cpb_progress_max="10"
                                 app:cpb_progressbar_width="4dp"
                                 app:cpb_round_border="true"
@@ -114,7 +114,7 @@
                                 android:padding="5dp"
                                 android:gravity="center"
                                 android:layout_centerInParent="true"
-                                android:textColor="#8b8989"
+                                android:textColor="@color/textColor"
                                 android:textSize="15sp"
                                 ></TextView>
                         </RelativeLayout>
@@ -129,7 +129,7 @@
                     android:textSize="20sp"
                     android:text="120 min"
                     android:layout_below="@id/headlayout"
-                    android:textColor="#8b8989"
+                    android:textColor="@color/textColor"
                     android:textStyle="italic"
                     ></TextView>
                 <androidx.recyclerview.widget.RecyclerView
@@ -155,7 +155,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:textStyle="bold"
-                android:textColor="#8b8989"
+                android:textColor="@color/textColor"
                 android:textSize="25sp"
                 android:text="Overview"
                 />
@@ -163,7 +163,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
-                android:textColor="#8b8989"
+                android:textColor="@color/textColor"
                 android:gravity="center"
                 android:layout_margin="8dp"
                 android:textStyle="italic"
@@ -179,7 +179,7 @@
                 android:layout_marginLeft="10dp"
                 android:textStyle="bold"
                 android:layout_below="@id/overviewmovie"
-                android:textColor="#8b8989"
+                android:textColor="@color/textColor"
                 android:id="@+id/CastTextView"
                 ></TextView>
             <androidx.recyclerview.widget.RecyclerView
@@ -212,7 +212,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
                 android:textStyle="bold"
-                android:textColor="#8b8989"
+                android:textColor="@color/textColor"
                 android:textSize="25sp"
                 android:layout_below="@id/castrecyclerview"
                 android:id="@+id/photosTextView"
@@ -232,7 +232,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/photosTextView"
                 android:visibility="gone"
-                android:textColor="#8b8989"
+                android:textColor="@color/textColor"
                 android:textStyle="bold"
                 android:layout_centerHorizontal="true"
                 android:textSize="20sp"
@@ -249,7 +249,7 @@
                 android:layout_marginLeft="10dp"
                 android:textStyle="bold"
                 android:layout_below="@id/backdroprecycler"
-                android:textColor="#8b8989"
+                android:textColor="@color/textColor"
                 android:id="@+id/trailersTextView"
                 ></TextView>
             <androidx.recyclerview.widget.RecyclerView
@@ -267,7 +267,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/trailersTextView"
                 android:visibility="gone"
-                android:textColor="#8b8989"
+                android:textColor="@color/textColor"
                 android:textStyle="bold"
                 android:layout_centerHorizontal="true"
                 android:textSize="20sp"

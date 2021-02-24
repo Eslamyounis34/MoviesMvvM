@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#191919"
     android:layoutDirection="ltr"
     android:clickable="true"
     android:focusableInTouchMode="true"
@@ -36,8 +35,8 @@
             android:hint="Type Movie Here"
             android:background="@drawable/edittextbg"
             android:gravity="center"
-            android:textColorHint="#191919"
-            android:textColor="#D5E1EE"
+            android:textColorHint="@color/editTextColor"
+            android:textColor="@color/editTextColor"
            android:layout_marginLeft="10dp"/>
         <ImageView
             android:layout_width="0dp"
